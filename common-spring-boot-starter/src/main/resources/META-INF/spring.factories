@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration = \
+  cn.yangwanhao.sdk.common.component.ValidateComponent \
+  ,cn.yangwanhao.sdk.common.component.LockComponent
