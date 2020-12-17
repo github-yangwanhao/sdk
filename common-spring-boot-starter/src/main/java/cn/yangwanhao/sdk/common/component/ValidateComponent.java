@@ -1,7 +1,6 @@
 package cn.yangwanhao.sdk.common.component;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -49,9 +48,8 @@ public class ValidateComponent {
             return null;
         }
         List<String> errorList = new ArrayList<>();
-        Iterator<ConstraintViolation<T>> iterator = errorMessage.iterator();
-        while (iterator.hasNext()) {
-            errorList.add(iterator.next().getMessage());
+        for (ConstraintViolation<T> constraintViolation : errorMessage) {
+            errorList.add(constraintViolation.getMessage());
         }
         return errorList;
     }
