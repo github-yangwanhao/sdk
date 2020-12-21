@@ -7,8 +7,9 @@
         <groupId>cn.yangwanhao.sdk</groupId>
         <version>1.0.0</version>
     </parent>
+
     <artifactId>test</artifactId>
-    <version>1.0.0</version>
+
     <name>test</name>
     <description>Test project for SDK</description>
 
@@ -31,7 +32,7 @@
         <dependency>
             <groupId>cn.yangwanhao.sdk</groupId>
             <artifactId>common-spring-boot-starter</artifactId>
-            <version>${parent.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
 
