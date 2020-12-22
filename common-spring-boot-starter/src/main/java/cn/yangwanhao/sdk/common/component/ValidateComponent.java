@@ -38,12 +38,44 @@ public class ValidateComponent {
     }
 
     /**
+     * 验证一个对象中所有字段,返回第一个错误信息
+     * @param t 被验证的对象
+     * @param groups 分组对象
+     * @return 第一个错误信息
+     */
+    public <T> String validate(T t, Class<?> groups) {
+        Set<ConstraintViolation<T>> errorMessage = validator.validate(t, groups);
+        if (errorMessage == null || CollectionUtils.isEmpty(errorMessage)) {
+            return null;
+        }
+        return errorMessage.iterator().next().getMessage();
+    }
+
+    /**
      * 验证一个对象中所有字段,返回所有错误信息
      * @param t 被验证的对象
      * @return 所有的错误信息
      */
     public <T> List<String> validateAll(T t) {
         Set<ConstraintViolation<T>> errorMessage = validator.validate(t);
+        if (errorMessage == null || CollectionUtils.isEmpty(errorMessage)) {
+            return null;
+        }
+        List<String> errorList = new ArrayList<>();
+        for (ConstraintViolation<T> constraintViolation : errorMessage) {
+            errorList.add(constraintViolation.getMessage());
+        }
+        return errorList;
+    }
+
+    /**
+     * 验证一个对象中所有字段,返回所有错误信息
+     * @param t 被验证的对象
+     * @param groups 分组对象
+     * @return 所有的错误信息
+     */
+    public <T> List<String> validateAll(T t, Class<?> groups) {
+        Set<ConstraintViolation<T>> errorMessage = validator.validate(t, groups);
         if (errorMessage == null || CollectionUtils.isEmpty(errorMessage)) {
             return null;
         }
