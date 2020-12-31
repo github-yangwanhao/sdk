@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cn.yangwanhao.sdk.common.component.IValidateComponent;
 import cn.yangwanhao.sdk.common.component.impl.ValidateComponentImpl;
 import cn.yangwanhao.sdk.test.common.dto.ValidateDto;
 
@@ -21,7 +22,7 @@ import cn.yangwanhao.sdk.test.common.dto.ValidateDto;
 public class ValidateTestController {
 
     @Autowired
-    private ValidateComponentImpl validator;
+    private IValidateComponent validator;
 
     @PostMapping("/test")
     public String testValidate(ValidateDto dto) {
