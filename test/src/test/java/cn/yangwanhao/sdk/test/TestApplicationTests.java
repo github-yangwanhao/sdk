@@ -6,11 +6,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.client.RestTemplate;
 
-import cn.yangwanhao.sdk.common.component.ValidateComponent;
+import cn.yangwanhao.sdk.common.component.impl.ValidateComponentImpl;
 import cn.yangwanhao.sdk.test.common.dto.ValidateDto;
 
 @SpringBootTest
@@ -18,7 +16,7 @@ import cn.yangwanhao.sdk.test.common.dto.ValidateDto;
 public class TestApplicationTests {
 
     @Autowired
-    private ValidateComponent validateComponent;
+    private ValidateComponentImpl validateComponent;
 
     @Test
     public void validateTest() {

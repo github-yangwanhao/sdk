@@ -1,4 +1,4 @@
-package cn.yangwanhao.sdk.common.component;
+package cn.yangwanhao.sdk.common.component.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
+import cn.yangwanhao.sdk.common.component.IValidateComponent;
+
 /**
  * 参数验证组件类
  *
@@ -19,16 +21,12 @@ import org.springframework.util.CollectionUtils;
  * @since 2020/12/9 17:59
  */
 @Component
-public class ValidateComponent {
+public class ValidateComponentImpl implements IValidateComponent {
 
     @Autowired
     private Validator validator;
 
-    /**
-     * 验证一个对象中所有字段,返回第一个错误信息
-     * @param t 被验证的对象
-     * @return 第一个错误信息
-     */
+    @Override
     public <T> String validate(T t) {
         Set<ConstraintViolation<T>> errorMessage = validator.validate(t);
         if (errorMessage == null || CollectionUtils.isEmpty(errorMessage)) {
@@ -37,12 +35,7 @@ public class ValidateComponent {
         return errorMessage.iterator().next().getMessage();
     }
 
-    /**
-     * 验证一个对象中所有字段,返回第一个错误信息
-     * @param t 被验证的对象
-     * @param groups 分组对象
-     * @return 第一个错误信息
-     */
+    @Override
     public <T> String validate(T t, Class<?> groups) {
         Set<ConstraintViolation<T>> errorMessage = validator.validate(t, groups);
         if (errorMessage == null || CollectionUtils.isEmpty(errorMessage)) {
@@ -51,11 +44,7 @@ public class ValidateComponent {
         return errorMessage.iterator().next().getMessage();
     }
 
-    /**
-     * 验证一个对象中所有字段,返回所有错误信息
-     * @param t 被验证的对象
-     * @return 所有的错误信息
-     */
+    @Override
     public <T> List<String> validateAll(T t) {
         Set<ConstraintViolation<T>> errorMessage = validator.validate(t);
         if (errorMessage == null || CollectionUtils.isEmpty(errorMessage)) {
@@ -68,12 +57,7 @@ public class ValidateComponent {
         return errorList;
     }
 
-    /**
-     * 验证一个对象中所有字段,返回所有错误信息
-     * @param t 被验证的对象
-     * @param groups 分组对象
-     * @return 所有的错误信息
-     */
+    @Override
     public <T> List<String> validateAll(T t, Class<?> groups) {
         Set<ConstraintViolation<T>> errorMessage = validator.validate(t, groups);
         if (errorMessage == null || CollectionUtils.isEmpty(errorMessage)) {

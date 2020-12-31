@@ -1,12 +1,14 @@
-package cn.yangwanhao.sdk.common.component;
+package cn.yangwanhao.sdk.common.component.impl;
 
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import cn.yangwanhao.base.common.support.ResponseMessage;
+import cn.yangwanhao.sdk.common.component.ILockComponent;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -18,13 +20,15 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Component
 @Slf4j
-public class LockComponent {
+@Primary
+public class RedisLockComponentImpl implements ILockComponent {
 
     private static final String VALUE = "lock";
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+    @Override
     public ResponseMessage<Boolean> tryLock(String key, Long time) {
         log.info("redis加锁:{}", key);
         Boolean result = stringRedisTemplate.opsForValue().setIfAbsent(key, VALUE, time, TimeUnit.SECONDS);
@@ -36,6 +40,7 @@ public class LockComponent {
         return ResponseMessage.handleResult(result);
     }
 
+    @Override
     public ResponseMessage<Boolean> unlock(String key) {
         log.info("redis释放锁:{}", key);
         Boolean result = stringRedisTemplate.delete(key);
