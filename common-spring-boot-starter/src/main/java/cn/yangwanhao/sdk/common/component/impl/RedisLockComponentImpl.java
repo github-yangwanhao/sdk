@@ -18,9 +18,8 @@ import lombok.extern.slf4j.Slf4j;
  * @version V1.0
  * @since 2020/12/16 11:47
  */
-@Component
+@Component("redisLockComponent")
 @Slf4j
-@Primary
 public class RedisLockComponentImpl implements ILockComponent {
 
     private static final String VALUE = "lock";

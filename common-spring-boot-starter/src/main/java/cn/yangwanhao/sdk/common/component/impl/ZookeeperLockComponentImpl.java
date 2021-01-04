@@ -11,9 +11,9 @@ import lombok.extern.slf4j.Slf4j;
  * @version V1.0
  * @since 2020/12/31 20:49
  */
-@Component
+@Component("zookeeperLockComponent")
 @Slf4j
-public class ZookeeperLockComponent implements ILockComponent {
+public class ZookeeperLockComponentImpl implements ILockComponent {
     @Override
     public ResponseMessage<Boolean> tryLock(String key, Long time) {
         log.info("zookeeper lock");

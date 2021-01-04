@@ -20,7 +20,7 @@ import cn.yangwanhao.sdk.common.component.IValidateComponent;
  * @version V1.0
  * @since 2020/12/9 17:59
  */
-@Component
+@Component("validateComponent")
 public class ValidateComponentImpl implements IValidateComponent {
 
     @Autowired
