@@ -1,4 +1,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration = \
   cn.yangwanhao.sdk.common.component.impl.ValidateComponentImpl \
   ,cn.yangwanhao.sdk.common.component.impl.RedisLockComponentImpl \
-  ,cn.yangwanhao.sdk.common.component.impl.ZookeeperLockComponentImpl
+  ,cn.yangwanhao.sdk.common.component.impl.ZookeeperLockComponentImpl \
+  ,cn.yangwanhao.sdk.common.aspect.LogMethodExecuteTimeAdvice \
+  ,cn.yangwanhao.sdk.common.aspect.PrintLogAdvice
