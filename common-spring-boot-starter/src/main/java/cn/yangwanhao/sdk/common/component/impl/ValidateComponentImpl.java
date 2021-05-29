@@ -45,7 +45,7 @@ public class ValidateComponentImpl implements IValidateComponent {
     }
 
     @Override
-    public <T> List<String> validateAll(T t) {
+    public <T> String validateAll(T t) {
         Set<ConstraintViolation<T>> errorMessage = validator.validate(t);
         if (errorMessage == null || CollectionUtils.isEmpty(errorMessage)) {
             return null;
@@ -54,11 +54,11 @@ public class ValidateComponentImpl implements IValidateComponent {
         for (ConstraintViolation<T> constraintViolation : errorMessage) {
             errorList.add(constraintViolation.getMessage());
         }
-        return errorList;
+        return errorList.toString();
     }
 
     @Override
-    public <T> List<String> validateAll(T t, Class<?> groups) {
+    public <T> String validateAll(T t, Class<?> groups) {
         Set<ConstraintViolation<T>> errorMessage = validator.validate(t, groups);
         if (errorMessage == null || CollectionUtils.isEmpty(errorMessage)) {
             return null;
@@ -67,6 +67,6 @@ public class ValidateComponentImpl implements IValidateComponent {
         for (ConstraintViolation<T> constraintViolation : errorMessage) {
             errorList.add(constraintViolation.getMessage());
         }
-        return errorList;
+        return errorList.toString();
     }
 }

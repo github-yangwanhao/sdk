@@ -2,6 +2,7 @@ package cn.yangwanhao.sdk.test.common;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,8 +27,8 @@ public class ValidateTestController {
 
     @PostMapping("/test")
     public String testValidate(ValidateDto dto) {
-        List<String> errorMessages = validator.validateAll(dto);
-        if (CollectionUtils.isEmpty(errorMessages)) {
+        String errorMessages = validator.validateAll(dto);
+        if (StringUtils.isBlank(errorMessages)) {
             return "no error occurred";
         }
         return errorMessages.toString();

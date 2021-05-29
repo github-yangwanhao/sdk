@@ -1,5 +1,7 @@
 package cn.yangwanhao.sdk.test.common.dto;
 
+import java.util.List;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -31,5 +33,9 @@ public class ValidateDto extends ValidateParentDto {
     @NotNull(message = "属性ValidateChildDto不能为空")
     @Valid
     private ValidateChildDto childDto;
+
+    @NotNull(message = "属性childDtoList不能为空")
+    @Valid
+    private List<ValidateChildDto> childDtoList;
 
 }

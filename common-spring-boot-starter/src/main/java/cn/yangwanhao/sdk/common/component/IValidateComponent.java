@@ -37,7 +37,7 @@ public interface IValidateComponent {
      * @param t 被验证的对象
      * @return 所有的错误信息
      */
-    public <T> List<String> validateAll(T t);
+    public <T> String validateAll(T t);
 
     /**
      * 验证一个对象中所有字段,返回所有错误信息
@@ -45,6 +45,6 @@ public interface IValidateComponent {
      * @param groups 分组对象
      * @return 所有的错误信息
      */
-    public <T> List<String> validateAll(T t, Class<?> groups);
+    public <T> String validateAll(T t, Class<?> groups);
 
 }

@@ -2,6 +2,7 @@ package cn.yangwanhao.sdk.test;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class TestApplicationTests {
     @Test
     public void validateTest() {
         ValidateDto validateDto = new ValidateDto();
-        List<String> errorMessages = validateComponent.validateAll(validateDto);
-        if (CollectionUtils.isEmpty(errorMessages)) {
+        String errorMessages = validateComponent.validateAll(validateDto);
+        if (StringUtils.isBlank(errorMessages)) {
             log.info("no error occurs");
         } else {
             log.error(errorMessages.toString());
