@@ -8,6 +8,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Range;
+
+import cn.yangwanhao.sdk.common.annotation.In;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,6 +31,7 @@ public class ValidateDto extends ValidateParentDto {
     private String bbb;
 
     @NotEmpty(message = "字符串ccc不能为空")
+    @In(template = "c|cc|ccc", message = "参数不在'c|cc|ccc'的范围内")
     private String ccc;
 
     @NotNull(message = "属性ValidateChildDto不能为空")
