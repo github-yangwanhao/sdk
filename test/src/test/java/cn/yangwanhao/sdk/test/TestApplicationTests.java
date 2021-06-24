@@ -26,11 +26,12 @@ public class TestApplicationTests {
     public void validateTest() {
         ValidateDto validateDto = new ValidateDto();
         validateDto.setCcc("aaa");
+        validateDto.setGender("2");
         String errorMessages = validateComponent.validateAll(validateDto);
         if (StringUtils.isBlank(errorMessages)) {
             log.info("no error occurs");
         } else {
-            log.error(errorMessages.toString());
+            log.error(errorMessages);
         }
     }
 

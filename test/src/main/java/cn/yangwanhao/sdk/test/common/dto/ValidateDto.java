@@ -11,6 +11,8 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Range;
 
 import cn.yangwanhao.sdk.common.annotation.In;
+import cn.yangwanhao.sdk.common.annotation.InEnum;
+import cn.yangwanhao.sdk.test.common.enums.EnumGender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -41,5 +43,8 @@ public class ValidateDto extends ValidateParentDto {
     @NotNull(message = "属性childDtoList不能为空")
     @Valid
     private List<ValidateChildDto> childDtoList;
+
+    @InEnum(template = EnumGender.class, message = "性别字段不在接口提供的码值范围内")
+    private String gender;
 
 }
