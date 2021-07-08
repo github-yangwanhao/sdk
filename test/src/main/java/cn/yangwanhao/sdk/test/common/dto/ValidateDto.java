@@ -3,6 +3,7 @@ package cn.yangwanhao.sdk.test.common.dto;
 import java.util.List;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -46,5 +47,8 @@ public class ValidateDto extends ValidateParentDto {
 
     @InEnum(template = EnumGender.class, message = "性别字段不在接口提供的码值范围内")
     private String gender;
+
+    @Email
+    private String email;
 
 }
